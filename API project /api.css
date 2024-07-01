@@ -30,11 +30,12 @@ body{
 
 }
 
-#icon{
+img #icon{
    
-    display: block;
+     display: block;
     width: 100px;
     margin: 10px auto;
+    width: 20%;
 }
 
 
