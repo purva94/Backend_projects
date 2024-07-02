@@ -54,5 +54,30 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script>
+      link =
+        "https://api.openweathermap.org/data/2.5/weather?q=Guna&appid=685d64f79ad092fbee32240e0b74e4ab";
+
+      var request = new XMLHttpRequest();
+      request.open("GET", link, true);
+      request.onload = function () {
+        var obj = JSON.parse(this.response);
+        console.log(obj);
+        document.getElementById("weather").innerHTML =
+          obj.weather[0].description;
+        document.getElementById("location").innerHTML = obj.name;
+        document.getElementById("temp").innerHTML = Math.round(
+          obj.main.temp - 273.15
+        );
+        document.getElementById("icon").src =
+          "https://openweathermap.org/img/w/" + obj.weather[0].icon + ".png";
+      };
+
+      if (request.status >= 200 && request.status < 400) {
+      } else {
+        console.log("The city is not available");
+      }
+      request.send();
+    </script>
   </body>
 </html>
